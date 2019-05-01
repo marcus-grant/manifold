@@ -1,23 +1,19 @@
 import * as bodyParser from 'body-parser';
 import { Router } from 'express';
-import { users, getUserById } from '../db';
+import { users, getMessagesByUserId } from '../db';
 
 export function apiRouter() {
   const router = Router();
   router.use(bodyParser.json());
 
-  router.get('/api/users', (req, res) => {
-    res.json(users);
-  });
-
-  router.get('/api/user/:userId', (req, res) => {
+  router.get('/api/user/:userId/messages', (req, res) => {
     const userId = req.params.userId;
-    res.json(getUserById(userId));
+    res.json(getMessagesByUserId(userId));
   });
 
-  router.post('/api/set-user', (req, res) => {
-    res.send(`ok`);
-  });
+  // router.post('/api/set-user', (req, res) => {
+  //   res.send(`ok`);
+  // });
 
   return router;
 }

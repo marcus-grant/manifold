@@ -1,9 +1,3 @@
-export interface IUserDTO {
-    userId: string;
-    userName: string;
-    imageUrl: string;
-}
-
 export enum MessageType {
   PLAIN,
   URL,
